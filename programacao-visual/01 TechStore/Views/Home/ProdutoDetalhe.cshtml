@@ -1,0 +1,80 @@
+@model TechStore.Models.ProdutoLojaViewModel
+
+@{
+    ViewData["Title"] = @Model.NomeProduto;
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Área da imagem do produto (placeholder) -->
+            <div class="card">
+                <div class="card-body text-center bg-light" style="height: 400px; display: flex; align-items: center; justify-content: center;">
+                    <span class="text-muted">📷 Imagem do Produto</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <!-- Informações do produto -->
+            <h1 class="display-4">@Model.NomeProduto</h1>
+            <p class="lead text-muted">Código: #@Model.Id</p>
+            
+            <hr />
+            
+            <h3 class="text-primary">
+                @Model.Preco.ToString("C", new System.Globalization.CultureInfo("pt-BR"))
+            </h3>
+            
+            <!-- Status de estoque usando Razor -->
+            @if (Model.PossuiEstoque)
+            {
+                <div class="alert alert-success mt-3" role="alert">
+                    ✅ <strong>Disponível para compra</strong>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger mt-3" role="alert">
+                    ❌ <strong>Esgotado!</strong>
+                </div>
+            }
+            
+            <hr />
+            
+            <h4>Descrição</h4>
+            <p>@Model.Descricao</p>
+            
+            <!-- Botão de compra (condicional) -->
+            @if (Model.PossuiEstoque)
+            {
+                <button class="btn btn-primary btn-lg mt-3">
+                    🛒 Adicionar ao Carrinho
+                </button>
+            }
+            else
+            {
+                <button class="btn btn-secondary btn-lg mt-3" disabled>
+                    🚫 Produto Indisponível
+                </button>
+            }
+            
+            <a href="/" class="btn btn-outline-secondary btn-lg mt-3 ms-2">
+                ← Voltar
+            </a>
+        </div>
+    </div>
+    
+    <!-- Seção de detalhes adicionais -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3>Especificações Técnicas</h3>
+            <ul class="list-group">
+                <li class="list-group-item">✓ Garantia de 12 meses</li>
+                <li class="list-group-item">✓ Nota fiscal eletrônica</li>
+                <li class="list-group-item">✓ Frete grátis para todo o Brasil</li>
+                <li class="list-group-item">✓ Devolução gratuita em até 7 dias</li>
+            </ul>
+        </div>
+    </div>
+</div>

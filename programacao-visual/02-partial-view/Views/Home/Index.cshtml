@@ -1,0 +1,15 @@
+﻿@model IEnumerable<TechStore.Models.Product>
+
+@{
+    ViewData["Title"] = "Catalogo de Produtos";
+}
+
+<h2>Catalogo de Produtos</h2>
+
+@if (Model != null)
+{
+    foreach (var product in Model)
+    {
+        @await Html.PartialAsync("_ProductCard", product)
+    }
+}
