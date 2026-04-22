@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center py-5">
+    <h1 class="display-3 fw-bold cinetrends-title">Bem-vindo ao CineTrends</h1>
+    <p class="lead text-secondary mb-4">Descubra os filmes mais populares da semana em um só lugar.</p>
+    <a class="btn btn-danger btn-lg rounded-pill px-5 shadow" asp-controller="Movies" asp-action="Index">
+        <i class="bi bi-film"></i> Explorar Filmes Populares
+    </a>
+</div>
+
+<div class="row text-center mt-5">
+    <div class="col-md-4 mb-4">
+        <div class="card bg-dark border-secondary h-100 p-3">
+            <div class="card-body">
+                <h3 class="card-title text-warning">🎬 Populares</h3>
+                <p class="card-text text-secondary">Veja os filmes que estão bombando nesta semana.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card bg-dark border-secondary h-100 p-3">
+            <div class="card-body">
+                <h3 class="card-title text-warning">⭐ Avaliações</h3>
+                <p class="card-text text-secondary">Confira as notas e reviews da comunidade.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card bg-dark border-secondary h-100 p-3">
+            <div class="card-body">
+                <h3 class="card-title text-warning">📅 Atualizado</h3>
+                <p class="card-text text-secondary">Dados sincronizados diretamente com o TMDB.</p>
+            </div>
+        </div>
+    </div>
+</div>
