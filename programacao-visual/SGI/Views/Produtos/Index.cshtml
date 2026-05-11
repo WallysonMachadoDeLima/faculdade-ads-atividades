@@ -1,0 +1,59 @@
+@model IEnumerable<SGI.Models.Produto>
+
+@{
+    ViewData["Title"] = "Produtos";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0"><i class="bi bi-box-seam me-2"></i>Produtos</h2>
+    <a asp-action="Create" class="btn btn-primary">
+        <i class="bi bi-plus-circle me-1"></i>Novo Produto
+    </a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        Nenhum produto cadastrado. <a asp-action="Create">Cadastre o primeiro produto.</a>
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle shadow-sm rounded">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th class="text-end">Preço</th>
+                    <th class="text-end">Quantidade</th>
+                    <th class="text-center">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var produto in Model)
+                {
+                    <tr>
+                        <td>@produto.Nome</td>
+                        <td class="text-end">@produto.Preco.ToString("C")</td>
+                        <td class="text-end">
+                            <span class="badge @(produto.Quantidade > 0 ? "bg-success" : "bg-danger")">
+                                @produto.Quantidade
+                            </span>
+                        </td>
+                        <td class="text-center">
+                            <a asp-action="Details" asp-route-id="@produto.Id" class="btn btn-sm btn-outline-info me-1" title="Detalhes">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            <a asp-action="Edit" asp-route-id="@produto.Id" class="btn btn-sm btn-outline-warning me-1" title="Editar">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@produto.Id" class="btn btn-sm btn-outline-danger" title="Excluir">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
